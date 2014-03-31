@@ -1,0 +1,8 @@
+*.egg-info
+*.pyc
+
+static/vendor/*
+static/.webassets-cache/*
+static/prod/*
+
+dist/*
