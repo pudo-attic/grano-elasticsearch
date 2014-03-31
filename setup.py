@@ -14,7 +14,7 @@ setup(
     keywords='sql graph sna networks journalism ddj elasticsearch',
     author='Friedrich Lindenberg',
     author_email='friedrich@pudo.org',
-    url='http://docs.grano.cc',
+    url='http://github.com/granoproject/grano-elasticsearch',
     license='MIT',
     packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
     namespace_packages=[],
