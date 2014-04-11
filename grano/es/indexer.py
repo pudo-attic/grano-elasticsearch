@@ -16,7 +16,7 @@ class Indexer(EntityChangeProcessor, ProjectChangeProcessor):
         """ Index a single entity. """
         if entity.same_as is not None:
             return
-        body = entities.to_index(entity)
+        body = entity.to_index()
         es.index(index=es_index, doc_type='entity',
                  id=body.pop('id'), body=body)
 
@@ -54,7 +54,7 @@ class Indexer(EntityChangeProcessor, ProjectChangeProcessor):
             entity = Entity.by_id(entity_id)
             if entity is None:
                 return
-            self.index_entity(self, entity)
+            self.index_entity(entity)
             es.indices.refresh(index=es_index)
 
 
