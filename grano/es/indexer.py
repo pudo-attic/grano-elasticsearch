@@ -1,3 +1,5 @@
+import logging
+
 from elasticsearch import Elasticsearch
 
 from grano.core import app, app_name
@@ -8,6 +10,7 @@ from grano.interface import EntityChangeProcessor, ProjectChangeProcessor
 
 es = Elasticsearch()
 es_index = app.config.get('ES_INDEX', app_name)
+log = logging.getLogger(__name__)
 
 
 class Indexer(EntityChangeProcessor, ProjectChangeProcessor):
