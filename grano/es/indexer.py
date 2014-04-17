@@ -61,4 +61,4 @@ class Indexer(EntityChangeProcessor, ProjectChangeProcessor):
     def project_changed(self, project_slug, operation):
         if operation == 'delete':
             self.delete_project(project_slug)
-        
+

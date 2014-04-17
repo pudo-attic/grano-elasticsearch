@@ -88,7 +88,7 @@ class Searcher(object):
         query['facets'] = {}
         for facet, size in self._facets:
             query['facets'][facet] = {'terms': {'field': facet, 'size': size}}
-        
+
         if len(self.filters):
             _filters = self.filters if len(self.filters) == 1 else {"and": self.filters}
             base_query = query.pop('query')
@@ -111,7 +111,7 @@ class Searcher(object):
         if sort is not None:
             sort, direction = sort
         sort = self.args.get('sort', sort)
-        direction = self.args.get('direction', 'asc')
+        direction = self.args.get('direction', direction)
         return sort, direction
 
 
