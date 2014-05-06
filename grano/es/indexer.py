@@ -47,7 +47,7 @@ class Indexer(EntityChangeProcessor, ProjectChangeProcessor):
 
 
     def delete_all(self):
-        es.delete_by_all(index=es_index, doc_type='entity')
+        es.delete(index=es_index)
 
 
     def entity_changed(self, entity_id, operation):
