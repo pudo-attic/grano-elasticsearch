@@ -23,13 +23,12 @@ class Indexer(EntityChangeProcessor, ProjectChangeProcessor):
         es.index(index=es_index, doc_type='entity',
                  id=body.pop('id'), body=body)
 
-
     def index_project(self, project=None):
         """ Index an entire project, or the entire database if no
         project is given. """
         q = Entity.all().filter_by(same_as=None)
         if project is not None:
-            q = q.filter(Entity.project==project)
+            q = q.filter(Entity.project == project)
 
         for i, entity in enumerate(q):
             self.index_entity(entity)
@@ -38,17 +37,14 @@ class Indexer(EntityChangeProcessor, ProjectChangeProcessor):
                 es.indices.refresh(index=es_index)
         es.indices.refresh(index=es_index)
 
-
     def delete_project(self, project_slug):
         field = {'project.slug': project_slug}
         query = {'query': {'term': field}}
         es.delete_by_query(index=es_index, doc_type='entity',
-            query=query)
-
+                           query=query)
 
     def delete_all(self):
         es.indices.delete(index=es_index)
-
 
     def entity_changed(self, entity_id, operation):
         if operation == 'delete':
@@ -59,7 +55,6 @@ class Indexer(EntityChangeProcessor, ProjectChangeProcessor):
                 return
             self.index_entity(entity)
             es.indices.refresh(index=es_index)
-
 
     def project_changed(self, project_slug, operation):
         if operation == 'delete':

@@ -9,11 +9,19 @@ search support based on ElasticSearch.
 Installation
 ------------
 
-``grano-ui`` requires that you have installed and configured
+``grano-elasticsearch`` requires that you have installed and configured
 `grano <http://grano.cc/>`_. Please refer to `grano's documentation <http://docs.grano.cc/>`_
 for further instructions. Afterwards, install the ``grano-elasticsearch``
 package (from PyPI or source) into the same virtual environment. You will
 also need to install and configure ElasticSearch.
+
+To enable this plugin, add the entry ``ui`` to the ``PLUGINS`` variable in
+your ``grano`` settings file. If you have no other plugins installed,
+try this:
+
+```python
+PLUGINS = ['es_boot', 'es_entity_indexer', 'es_project_indexer']
+```
 
 
 Web API
@@ -59,7 +67,7 @@ Some examples::
 Configuration
 -------------
 
-By default, ``grano-elasticsearch`` will deploy itself and add its endpoint to
+When enabled, ``grano-elasticsearch`` will deploy itself and add its endpoint to
 the ``grano`` API. To specify the name of the ElasticSearch index, you can set
 the ``ES_INDEX`` setting in your ``grano`` configuration file. If no index name
 is specified, the application's name (``APP_NAME``) will be used.
