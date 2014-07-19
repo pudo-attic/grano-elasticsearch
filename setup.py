@@ -1,9 +1,12 @@
 import os
 from setuptools import setup, find_packages
 
+VERSION = os.path.join(os.path.dirname(__file__), 'VERSION')
+VERSION = open(VERSION, 'r').read().strip()
+
 setup(
     name='grano-elasticsearch',
-    version=os.environ.get('GRANO_RELEASE', '0.3.2'),
+    version=VERSION,
     description="An entity and social network tracking software for news applications (ElasticSearch support)",
     long_description=open('README.rst').read(),
     classifiers=[
